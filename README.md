@@ -1,33 +1,23 @@
 # Smart-Assistant-for-Research-Summarization
 
-# 📚 Smart Research Assistant
+AI-powered document analysis tool with contextual understanding and logical reasoning
 
-> AI-powered document analysis tool with contextual understanding and logical reasoning
-
-## 🌟 Overview
+## Overview
 
 The Smart Research Assistant is an intelligent document analysis tool that enables users to upload documents and interact with them through natural language queries and AI-generated comprehension questions. This implementation demonstrates advanced RAG (Retrieval-Augmented Generation) capabilities with strict document grounding and contextual memory.
 
-### ✨ Key Features
+### Key Features
 
-- 📤 **Document Upload**: PDF support with automatic processing and chunking
-- 📋 **Auto Summary**: Generates concise summaries (≤150 words) immediately after upload
-- 🤔 **Ask Anything Mode**: Natural language Q&A with source attribution and conversation memory
-- 🎯 **Challenge Me Mode**: AI-generated comprehension questions with evaluation and detailed feedback
-- 💾 **Memory Management**: Maintains conversation context across sessions using Supabase
-- 📚 **Source Citations**: Every answer includes document references with page numbers
-- 🔒 **No Hallucination**: Responses are strictly grounded in uploaded document content
+-  **Document Upload**: PDF support with automatic processing and chunking
+-  **Auto Summary**: Generates concise summaries (≤150 words) immediately after upload
+-  **Ask Anything Mode**: Natural language Q&A with source attribution and conversation memory
+-  **Challenge Me Mode**: AI-generated comprehension questions with evaluation and detailed feedback
+-  **Memory Management**: Maintains conversation context across sessions using Supabase
+-  **Source Citations**: Every answer includes document references with page numbers
+-  **No Hallucination**: Responses are strictly grounded in uploaded document content
 
-## 📁 Project Structure
 
-```
-smart-research-assistant/
-├── app.py     # Complete application (all code in single file)
-├── .env       # Environment variables (API keys) (not added)
-└── README.md  # This documentation
-```
-
-## 🏗️ Architecture & Reasoning Flow
+##  Architecture & Reasoning Flow
 
 ### System Architecture
 ```
@@ -91,30 +81,16 @@ Results Display with Improvement Suggestions
 - **Memory**: Supabase (conversation history and session management)
 - **Document Processing**: LangChain + PyPDF2 (text extraction and chunking)
 
-## 🚀 Setup Instructions
+##  Setup Instructions
 
 ### Prerequisites
 
 - Python 3.8+
 - API keys for: Google Gemini, Qdrant Cloud, Supabase
 
-### Step 1: Get API Keys
+### Step 1: Get API Keys for Google Gemini , Qdrant cloud and Supabase
 
-#### Google Gemini API (Free)
-1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Create API key
-3. Copy for `.env` file
-
-#### Qdrant Cloud (Free Tier)
-1. Sign up at [Qdrant Cloud](https://cloud.qdrant.io/)
-2. Create cluster
-3. Copy URL and API key
-
-#### Supabase (Free Tier)
-1. Create account at [Supabase](https://supabase.com)
-2. Create new project
-3. Go to Settings → API for keys
-4. **IMPORTANT**: Run this SQL in Supabase SQL Editor:
+**IMPORTANT**: Run this SQL in Supabase SQL Editor:
 ```sql
 CREATE TABLE "ez-history" (
     id uuid PRIMARY KEY,
@@ -130,7 +106,7 @@ CREATE TABLE "ez-history" (
 1. **Download/Copy `app.py`** (contains complete application)
 
 2. **Install dependencies:**
-```bash
+```
 pip install streamlit langchain langchain-google-genai langchain-community qdrant-client supabase sentence-transformers PyPDF2 python-dotenv
 ```
 
@@ -150,9 +126,7 @@ GEMINI_API_KEY=your_gemini_api_key
 streamlit run app.py
 ```
 
-Open browser to `http://localhost:8501`
-
-## 🎯 How to Use
+## How to Use
 
 ### Document Upload & Summary
 1. Click **"Choose PDF file"** in sidebar
@@ -181,7 +155,7 @@ Open browser to `http://localhost:8501`
 - **🆕 New Session**: Start fresh
 - **📤 Upload New Document**: Process different file
 
-## ⚙️ Technical Specifications
+## Technical Specifications
 
 ### Core Parameters
 - **Chunk Size**: 3000 characters
@@ -199,41 +173,7 @@ Open browser to `http://localhost:8501`
 - **Document Grounding**: Every answer justified with sources
 - **Auto-Collection Creation**: Qdrant collection created automatically
 
-## 🔧 Troubleshooting
-
-### Common Issues
-
-**1. Environment Variables Error**
-```bash
-# Make sure .env file exists with all 6 variables
-# Check file is in same directory as app.py
-```
-
-**2. Supabase Table Missing**
-```sql
--- Run this in Supabase SQL Editor:
-CREATE TABLE "ez-history" (
-    id TEXT PRIMARY KEY,
-    session_id TEXT NOT NULL,
-    role TEXT NOT NULL,
-    content TEXT NOT NULL,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-```
-
-**3. Collection Error**
-```bash
-# App auto-creates Qdrant collection
-# Verify QDRANT_HOST and QDRANT_API_KEY in .env
-```
-
-**4. Import Errors**
-```bash
-# Install all dependencies:
-pip install streamlit langchain langchain-google-genai langchain-community qdrant-client supabase sentence-transformers PyPDF2 python-dotenv
-```
-
-## 📊 Implementation Details
+## Implementation Details
 
 ### Document Processing
 - **Text Extraction**: PyPDF2 for PDF reading
@@ -252,7 +192,7 @@ pip install streamlit langchain langchain-google-genai langchain-community qdran
 - **Evaluation**: AI scoring with detailed feedback
 - **Grading Criteria**: Accuracy, completeness, understanding, evidence use
 
-## 📋 Requirements Fulfilled
+## Requirements Fulfilled
 
 ✅ **Document Upload (PDF)**: Streamlit file upload with processing  
 ✅ **Ask Anything Mode**: Free-form Q&A with contextual understanding  
@@ -263,22 +203,6 @@ pip install streamlit langchain langchain-google-genai langchain-community qdran
 ✅ **Memory Handling**: Follow-up questions with conversation context  
 ✅ **Source Justification**: Every answer includes document references  
 
-## 🎯 Evaluation Criteria Addressed
-
-- **Response Quality (30%)**: Accurate answers with document justification
-- **Reasoning Mode (20%)**: Quality question generation and evaluation
-- **UI/UX Flow (15%)**: Intuitive interface with smooth navigation
-- **Code Structure (15%)**: Well-organized single-file architecture
-- **Creativity (10%)**: Memory handling and document isolation features
-- **Grounding (10%)**: Zero hallucination with strict document sourcing
-
-## 💡 Key Innovations
-
-1. **Document Isolation**: Unique IDs prevent confusion between uploaded documents
-2. **Auto-Collection Management**: Qdrant collection created automatically
-3. **Context-Aware Q&A**: Maintains conversation flow across multiple questions
-4. **Source Attribution**: Every response includes specific page references
-5. **Comprehensive Evaluation**: AI scoring with detailed improvement feedback
 
 ## 🚀 Quick Start
 
