@@ -30,7 +30,7 @@ smart-research-assistant/
 ## 🏗️ Architecture & Reasoning Flow
 
 ### System Architecture
-
+```
 User Uploads PDF/TXT
          │
          ▼
@@ -52,7 +52,7 @@ User Uploads PDF/TXT
   LLM Generates Qs → User Answers
                           │
       Evaluate → Feedback + Citation
-
+```
 
 ### Processing Flows
 
